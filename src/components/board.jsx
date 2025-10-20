@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import useWordle from '../hooks/useWordle'
+import Row from './Row'
 
 const Board = ({ solution }) => {
   const { currentGuess, handleKeydown, guesses, isCorrect, turn } = useWordle(solution)
@@ -17,7 +18,17 @@ const Board = ({ solution }) => {
   }, [guesses, turn, isCorrect])
 
   return (
-    <div>{currentGuess}</div>
+    <div className='grid gap-2'>
+      {
+        guesses.map((guess, i) => {
+          if (turn === i) {
+            return <Row key={i} currentGuess={currentGuess} />
+          }
+          return <Row key={i} guess={guess} />
+        })
+      }
+    </div>
+
   )
 }
 
