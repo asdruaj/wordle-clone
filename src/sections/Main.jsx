@@ -7,7 +7,7 @@ import Modal from '../components/Modal'
 
 const Main = () => {
   const [solution, setSolution] = useState(null)
-  const { currentGuess, handleKeydown, guesses, isCorrect, turn, usedKeys, resetGame } = useWordle(solution)
+  const { currentGuess, handleKeydown, guesses, isCorrect, turn, usedKeys, resetGame, setCurrentGuess } = useWordle(solution)
   const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const Main = () => {
         solution &&
           <Board currentGuess={currentGuess} handleKeydown={handleKeydown} guesses={guesses} isCorrect={isCorrect} turn={turn} setShowModal={setShowModal} />
         }
-        <Keyboard usedKeys={usedKeys} />
+        <Keyboard usedKeys={usedKeys} setCurrentGuess={setCurrentGuess} currentGuess={currentGuess} handleKeydown={handleKeydown} />
       </main>
       {showModal && <Modal isCorrect={isCorrect} turn={turn} solution={solution} onRestart={handleRestart} />}
     </>
