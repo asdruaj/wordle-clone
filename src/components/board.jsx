@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Row from './Row'
+import Row from './Row.jsx'
 
 const Board = ({ currentGuess, guesses, isCorrect, turn, handleKeydown, setShowModal }) => {
   useEffect(() => {

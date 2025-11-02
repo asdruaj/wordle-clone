@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import fetchWord from '../helpers/fetchWord'
-import Board from '../components/Board'
-import Keyboard from '../components/Keyboard'
-import useWordle from '../hooks/useWordle'
-import Modal from '../components/Modal'
+import fetchWord from '../helpers/fetchWord.js'
+import Board from '../components/Board.jsx'
+import Keyboard from '../components/Keyboard.jsx'
+import useWordle from '../hooks/useWordle.js'
+import Modal from '../components/Modal.jsx'
 
 const Main = () => {
   const [solution, setSolution] = useState(null)
