@@ -24,13 +24,15 @@ const Keyboard = ({ usedKeys, setCurrentGuess, currentGuess, handleKeydown }) =>
     }
 
     // append letter (ensure lowercase)
-    setCurrentGuess(prev => prev + key.toLowerCase())
+    if (currentGuess.length < 5) {
+      setCurrentGuess(prev => prev + key.toLowerCase())
+    }
   }
 
   const Key = ({ label, value, isSpecial }) => {
     const color = value && usedKeys ? usedKeys[value] : ''
-    const baseClass = 'cursor-pointer m-1.5 rounded-lg leading-12 font-bold uppercase text-xl inline-block text-center'
-    const specialClass = isSpecial ? 'px-4 py-2 min-w-[5rem] text-sm bg-gray-200' : 'w-11 h-11'
+    const baseClass = 'cursor-pointer m-1.5 rounded-lg leading-12 font-bold uppercase text-xl inline-block text-center bg-gray-200'
+    const specialClass = isSpecial ? 'px-4 py-2 min-w-[5rem] text-sm bg-gray-300' : 'w-11 h-11'
     return (
       <div onClick={() => handleKeyboardClick(value || label)} className={`${color} ${baseClass} ${specialClass}`}>
         {label}
