@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import fetchWord from '../helpers/fetchWord'
 import Board from '../components/Board'
+import Keyboard from '../components/Keyboard'
 
 const Main = () => {
   const [solution, setSolution] = useState(null)
@@ -24,7 +25,8 @@ const Main = () => {
       {
         solution &&
           <Board solution={solution} />
-      }
+        }
+      <Keyboard />
     </main>
   )
 }

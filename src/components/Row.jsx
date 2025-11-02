@@ -3,10 +3,10 @@ import React from 'react'
 const Row = ({ guess, currentGuess }) => {
   if (guess) {
     return (
-      <div className='flex gap-2'>
+      <div className='flex gap-2 row justify-center'>
         {
         guess.map((item, i) => (
-          <div key={i} className={item.status + ' cell'}>{item.char}</div>
+          <div key={i} className={`${item.status} cell `}>{item.char}</div>
         ))
         }
       </div>
@@ -17,10 +17,10 @@ const Row = ({ guess, currentGuess }) => {
     const letters = currentGuess.split('')
 
     return (
-      <div className='flex gap-2 '>
+      <div className='flex gap-2 justify-center'>
         {
         letters.map((item, i) => (
-          <div key={i} className='cell'>{letters[i]}</div>
+          <div key={i} className='cell animate-[single-pulse_0.2s_ease-in-out_forwards]'>{letters[i]}</div>
         ))
         }
         {[...Array(5 - letters.length)].map((_, i) => (
