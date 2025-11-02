@@ -1,6 +1,6 @@
 const fetchWord = async () => {
   try {
-    const response = await fetch('https://random-words-api.kushcreates.com/api?language=en&length=5&type=uppercase&words=100')
+    const response = await fetch('https://random-words-api.kushcreates.com/api?language=en&length=5&words=100')
 
     const result = await response.json()
 

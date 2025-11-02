@@ -12,7 +12,7 @@ body{
   place-items: center;
   font-family: 'Karla', sans-serif;
   width: 100%;
-  padding-top: 2rem;
+  padding-top: 0.5rem;
   height: 100%;
 }
 
@@ -22,7 +22,7 @@ h1{
 }
 
 .cell{
-  @apply w-16 h-16 bg-gray-100 border border-gray-400 justify-center items-center flex text-5xl font-bold uppercase;
+  @apply w-14 h-14 bg-gray-100 border border-gray-400 justify-center items-center flex text-5xl font-bold uppercase;
 }
 
 .correct{

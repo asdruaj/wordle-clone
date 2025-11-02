@@ -1,17 +1,28 @@
 import React, { useEffect } from 'react'
-import useWordle from '../hooks/useWordle'
 import Row from './Row'
 
-const Board = ({ solution }) => {
-  const { currentGuess, handleKeydown, guesses, isCorrect, turn } = useWordle(solution)
-
+const Board = ({ currentGuess, guesses, isCorrect, turn, handleKeydown, setShowModal }) => {
   useEffect(() => {
     window.addEventListener('keydown', handleKeydown)
+
+    if (isCorrect) {
+      setTimeout(() => {
+        setShowModal(true)
+      }, 2000)
+      window.removeEventListener('keydown', handleKeydown)
+    }
+
+    if (turn > 5) {
+      setTimeout(() => {
+        setShowModal(true)
+      }, 2000)
+      window.removeEventListener('keydown', handleKeydown)
+    }
 
     return () => {
       window.removeEventListener('keydown', handleKeydown)
     }
-  }, [handleKeydown])
+  }, [handleKeydown, isCorrect])
 
   useEffect(() => {
     console.log(guesses, turn, isCorrect)

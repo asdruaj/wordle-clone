@@ -6,13 +6,16 @@ const useWordle = (solution) => {
   const [guesses, setGuesses] = useState(Array(6).fill(null)) // formatted guesses
   const [history, setHistory] = useState([]) // string guesses
   const [isCorrect, setIsCorrect] = useState(false)
+  const [usedKeys, setUsedKeys] = useState({
+
+  })
 
   // Format a guess into an array of letter objexts
   // e.g [{key: a, status: 'correct'}]
   const formatGuess = () => {
     const solutionArray = [...solution]
     const formattedGuess = [...currentGuess].map(char => {
-      return { char: char.toUpperCase(), status: 'absent' }
+      return { char, status: 'absent' }
     })
 
     // check if letter is correct
@@ -40,7 +43,7 @@ const useWordle = (solution) => {
   // update the isCorrect state if the guess is correct
   // add one to the turn state
   const adddNewGuess = (formattedGuess) => {
-    if (currentGuess.toLocaleUpperCase() === solution) {
+    if (currentGuess === solution) {
       setIsCorrect(true)
     }
 
@@ -57,7 +60,41 @@ const useWordle = (solution) => {
 
     setTurn(prev => ++prev)
 
+    setUsedKeys(prev => {
+      const newKeys = { ...prev }
+
+      formattedGuess.forEach((l) => {
+        const currentColor = newKeys[l.char]
+
+        if (l.status === 'correct') {
+          newKeys[l.char] = 'correct'
+          return
+        }
+
+        if (l.status === 'present' && currentColor !== 'correct') {
+          newKeys[l.char] = 'present'
+          return
+        }
+
+        if (l.status === 'absent' && currentColor !== 'correct' && currentColor !== 'present') {
+          newKeys[l.char] = 'absent'
+        }
+      })
+      console.log(newKeys)
+      return newKeys
+    })
+
     setCurrentGuess('')
+  }
+
+  // reset the game state (useful for restarting)
+  const resetGame = () => {
+    setTurn(0)
+    setCurrentGuess('')
+    setGuesses(Array(6).fill(null))
+    setHistory([])
+    setIsCorrect(false)
+    setUsedKeys({})
   }
 
   // handle keydown event & track current guess
@@ -93,7 +130,7 @@ const useWordle = (solution) => {
     }
   }
 
-  return { turn, currentGuess, guesses, isCorrect, handleKeydown }
+  return { turn, currentGuess, guesses, isCorrect, handleKeydown, usedKeys, resetGame }
 }
 
 export default useWordle
