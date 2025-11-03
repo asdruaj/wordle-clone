@@ -4,7 +4,7 @@ const fetchWord = async () => {
 
     const result = await response.json()
 
-    const solution = result[Math.floor(Math.random() * 100)].word
+    const solution = result[Math.floor(Math.random() * 100)]
     return solution
   } catch (error) {
     console.log(error)
