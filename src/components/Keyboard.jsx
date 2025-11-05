@@ -32,7 +32,7 @@ const Keyboard = ({ usedKeys, setCurrentGuess, currentGuess, handleKeydown }) =>
   const Key = ({ label, value, isSpecial }) => {
     const color = value && usedKeys ? usedKeys[value] : ''
     const baseClass = 'cursor-pointer m-1.5 rounded-lg leading-12 font-bold uppercase text-xl inline-block text-center bg-gray-200'
-    const specialClass = isSpecial ? 'px-4 py-2 min-w-[5rem] text-sm bg-gray-300' : 'w-11 h-11'
+    const specialClass = isSpecial ? 'px-4 py-2 min-w-[2rem] md:min-w-[5rem] text-sm bg-gray-300' : 'w-5 md:w-[3rem]'
     return (
       <div onClick={() => handleKeyboardClick(value || label)} className={`${color} ${baseClass} ${specialClass}`}>
         {label}
@@ -41,7 +41,7 @@ const Keyboard = ({ usedKeys, setCurrentGuess, currentGuess, handleKeydown }) =>
   }
 
   return (
-    <div className='max-w-xl m-[20px_auto]'>
+    <div className='w-full md:max-w-screen m-[20px_auto]'>
       <div className='flex justify-center mb-2'>
         {row1.map(k => <Key key={k} label={k} value={k} />)}
       </div>
