@@ -25,19 +25,31 @@ h1{
   @apply w-14 h-14 bg-gray-100 border border-gray-400 justify-center items-center flex text-5xl font-bold uppercase;
 }
 
-.correct{
+.board > .correct{
   @apply animate-[flip_0.5s_ease_forwards];
   --final-bg: var(--color-green-400)
 }
 
-.absent{
+.board > .absent{
   @apply animate-[flip_0.5s_ease_forwards];
    --final-bg: var(--color-gray-400)
 }
 
-.present{
+.board > .present{
   @apply animate-[flip_0.5s_ease_forwards];
    --final-bg: var(--color-amber-400)
+}
+
+.keyboard-row > .correct{
+  @apply bg-green-400 
+}
+
+.keyboard-row > .absent{
+    @apply bg-gray-400
+}
+
+.keyboard-row > .present{
+    @apply bg-amber-400 
 }
 
 .row > div:nth-child(2){

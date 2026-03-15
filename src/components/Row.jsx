@@ -3,7 +3,7 @@ import React from 'react'
 const Row = ({ guess, currentGuess }) => {
   if (guess) {
     return (
-      <div className='flex gap-2 row justify-center'>
+      <div className='board flex gap-2 row justify-center'>
         {
         guess.map((item, i) => (
           <div key={i} className={`${item.status} cell `}>{item.char}</div>
